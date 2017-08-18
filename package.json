@@ -1,6 +1,6 @@
 {
   "name": "gsof-simple-file-async",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a simple async/await file library, like csharp file class.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
