@@ -1,4 +1,4 @@
-import file from '../'
+import { file, directory } from '../'
 
 async function test() {
     console.log(Object.getOwnPropertyNames(file));
