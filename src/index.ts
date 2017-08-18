@@ -1,3 +1,5 @@
 import { file } from './file'
+import { directory } from './directory'
 
-export default new file();
+export default { file, directory };
+export { file, directory };
