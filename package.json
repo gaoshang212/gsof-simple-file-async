@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "a simple async/await file library, like csharp file class.",
   "main": "index.js",
-  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "node test/test.js",
     "typings": "tsc -d --module system --moduleResolution node --OutFile ./dist/index.js",
@@ -17,6 +17,10 @@
     "C#",
     "csharp"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gaoshang212/gsof-simple-file-async.git"
+  },
   "author": "gaoshang",
   "license": "MIT",
   "devDependencies": {
