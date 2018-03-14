@@ -5,6 +5,7 @@ export declare class file {
     exists(path: string): Promise<boolean>;
     delete(path: string): Promise<void>;
     readAllText(path: string): Promise<string>;
+    readAllJson<T>(path: string): Promise<T>;
     writeAllBytes(path: string, buffer: Buffer): Promise<void>;
     stat(path: string): Promise<fs.Stats>;
     writeAllText(path: string, content: string): Promise<void>;

@@ -45,6 +45,11 @@ export class file {
         return promise;
     }
 
+    public async readAllJson<T>(path: string): Promise<T> {
+        let text = await this.readAllText(path);
+        return text ? JSON.parse(text) as T : undefined;
+    }
+
     public async writeAllBytes(path: string, buffer: Buffer): Promise<void> {
         let promise = new Promise<void>((resolve, reject) => {
             fs.open(path, 'w', (err, fd) => {
