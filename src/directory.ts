@@ -2,8 +2,15 @@ import * as mkdirp from 'mkdirp';
 import * as fs from "fs";
 
 import * as rimraf from "rimraf";
+import { join } from 'path';
+import { file } from "../";
 
 export class directory {
+
+    public async isDirectory(path: string) {
+        let stat = await file.stat(path)
+        return stat.isDirectory();
+    }
 
     public createDirectory(path: string): Promise<void> {
         let promise = new Promise<void>((resole, reject) => {
@@ -21,8 +28,19 @@ export class directory {
 
     public getDirectories(path: string) {
         let promise = new Promise<string[]>((resole, reject) => {
-            fs.readdir(path, (err, files) => {
-                !err ? resole(files) : reject(err);
+            fs.readdir(path, async (err, files) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    let result: string[] = [];
+                    for (let file of files.map(i => join(path, i))) {
+                        if (!await this.isDirectory(file)) {
+                            continue;
+                        }
+                        result.push(file);
+                    }
+                    resole(result);
+                }
             })
         });
         return promise;
