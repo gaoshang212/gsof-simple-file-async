@@ -1,6 +1,6 @@
 {
   "name": "gsof-simple-file-async",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "a simple async/await file library, like csharp file class.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -27,10 +27,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^8.0.23",
+    "@types/rimraf": "^2.0.2",
     "npm-run-all": "^4.0.2",
     "shelljs": "^0.7.8"
   },
   "dependencies": {
-    "mkdirp": "^0.5.1"
+    "mkdirp": "^0.5.1",
+    "rimraf": "^2.6.2"
   }
 }
