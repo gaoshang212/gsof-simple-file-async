@@ -1,4 +1,5 @@
 import * as fs from 'fs';
+import * as util from 'util';
 
 export class file {
 
@@ -31,23 +32,21 @@ export class file {
         return promise;
     }
 
-    public async readAllText(path: string): Promise<string> {
-        let promise = new Promise<string>((resolve, reject) => {
-            fs.readFile(path, 'utf8', (err, data) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-            });
-        });
-
-        return promise;
+    public readAllText(path: string): Promise<string> {
+        const readFile = util.promisify(fs.readFile);
+        return readFile(path, 'utf8');
     }
 
     public async readAllJson<T>(path: string): Promise<T> {
         let text = await this.readAllText(path);
         return text ? JSON.parse(text) as T : undefined;
+    }
+
+    public async readAllBlob(path: string): Promise<Blob> {
+        const readFile = util.promisify(fs.readFile);
+        const buffer = await readFile(path);
+
+        return new Blob([buffer.buffer]);
     }
 
     public async writeAllBytes(path: string, buffer: Buffer): Promise<void> {
@@ -154,5 +153,10 @@ export class file {
             })
         });
         return promise;
+    }
+
+    public async isFile(path: string) {
+        let stat = await this.stat(path)
+        return stat.isFile();
     }
 }

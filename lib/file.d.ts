@@ -6,6 +6,7 @@ export declare class file {
     delete(path: string): Promise<void>;
     readAllText(path: string): Promise<string>;
     readAllJson<T>(path: string): Promise<T>;
+    readAllBlob(path: string): Promise<Blob>;
     writeAllBytes(path: string, buffer: Buffer): Promise<void>;
     stat(path: string): Promise<fs.Stats>;
     writeAllText(path: string, content: string): Promise<void>;
@@ -24,4 +25,5 @@ export declare class file {
      * @param newPath
      */
     move(oldPath: string, newPath: string): Promise<void>;
+    isFile(path: string): Promise<boolean>;
 }
