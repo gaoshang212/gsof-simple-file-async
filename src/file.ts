@@ -91,9 +91,9 @@ export class file {
         let promise = new Promise<void>((resolve, reject) => {
             fs.open(path, 'w', (err, fd) => {
                 let notiyError = (error) => {
-                    fs.close(fd, () => {
+                    fd ? fs.close(fd, () => {
                         reject(err);
-                    });
+                    }) : reject(err);
                 };
                 if (err) { notiyError(err); return; }
                 fs.write(fd, content, (error, written) => {

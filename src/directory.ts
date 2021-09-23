@@ -9,7 +9,7 @@ export class directory {
 
     public async isDirectory(path: string) {
         let stat = await file.stat(path)
-        return stat.isDirectory();
+        return stat && stat.isDirectory();
     }
 
     public createDirectory(path: string): Promise<void> {

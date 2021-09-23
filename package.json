@@ -1,6 +1,6 @@
 {
   "name": "gsof-simple-file-async",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "description": "a simple async/await file library, like csharp file class.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,7 @@
     "typings": "tsc -d --module system --moduleResolution node --OutFile ./dist/index.js",
     "clean": "node -e \"var s=require('shelljs'),d=['lib'];s.rm('-rf',d);\"",
     "build:ts": "tsc",
-    "build": "npm-run-all clean build:ts typings",
+    "build": "npx npm-run-all clean build:ts typings",
     "start": "npm run build:live",
     "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
   },
